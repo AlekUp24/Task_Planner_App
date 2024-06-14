@@ -6,7 +6,9 @@
 <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">
     <ul>
     {% for list in lists %}
-        <li class="text-xl m-2 transition-transform transform hover:scale-105">{{list.id}}.  {{list.name}}</li>
+        <li class="text-xl m-2 transition-transform transform hover:scale-105">
+            <a href="./{{list.id}}">{{list.id}}.  {{list.name}}</a>
+        </li>
     {% endfor %}
     </ul>
 </div>
