@@ -3,9 +3,15 @@
 {% block content %}
 
 <div class="text-left max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">
-    <div class="font-semibold">{{task.name}}</div>
-    <div>{{ task.description }}</div>
-    <div>{{ task.complete}}</div>
-    <div>Due: {{task.due_date}}</div>
+    <div class="mb-4 text-xl font-semibold">{{task.name}}</div>
+
+    <label class="mt-2 font-semibold">Description</label>
+    <div class="ml-5">{{ task.description }}</div>
+    
+    <label class="mt-2 font-semibold">Completed</label>
+    <div class="ml-5">{{ task.complete}}</div>
+
+    <label class="mt-2 font-semibold">Deadline</label>
+    <div class="ml-5">{{task.due_date}}</div>
 </div>
 {% endblock %}
