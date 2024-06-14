@@ -1,5 +1,17 @@
-<h1> HUBERT to jest twój navbar<h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Planner App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+        {% include 'navbar.html' %}
 
-{% block content %}
-
-{% endblock %}
+    <div class="text-center flex-grow container mx-auto mt-10 px-4 sm:px-0">
+        {% block content %} 
+        {% endblock %}
+    </div>
+</body>
+</html>

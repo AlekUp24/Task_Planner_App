@@ -9,6 +9,6 @@ def index(request):
 
 def getlist(request,id):
     task_list = TaskList.objects.get(id=id)
-    items = TaskItem.objects.all()
+    items = TaskItem.objects.filter(task_list__id=id)
 
     return render(request, 'list_details.html', {"list": task_list, "items":items})
