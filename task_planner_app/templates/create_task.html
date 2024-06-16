@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-2xl font-semibold">Add task list:</h2>
+
+<form class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">
+    
+    <div class="container flex">
+        <label class="font-semibold px-4 justify-self-start ">List:</label>
+        {{list.name}}
+    </div>
+
+    <div class="container flex">
+        <label class="font-semibold px-4 justify-self-start ">Name:</label>
+        <input type="text" class="border rounded-lg px-3" placeholder="Task name...">
+    </div>
+    <div class="container flex">
+        <label class="font-semibold px-4">Description:</label>
+        <textarea type="text" class="border rounded-lg px-3" rows="3" cols="100" placeholder="Task description..."></textarea>
+    </div>
+    <div class="container flex">
+        <label class="font-semibold px-4">Completed:</label>
+        <input type="checkbox" class="border rounded-lg text-center">
+    </div>
+    <div class="container flex">
+        <label class="font-semibold px-4">Due Date:</label>
+        <input type="datetime-local" class="border rounded-lg text-center">
+    </div>
+    
+    <input type="submit" href='create_list' value="+ Create Task" class="bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+
+</form>
+
+
+{% endblock %}
