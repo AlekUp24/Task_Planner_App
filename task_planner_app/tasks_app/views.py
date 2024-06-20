@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import TaskList, TaskItem
 # Create your views here.
 
@@ -23,8 +23,13 @@ def create_list(request):
     return render(request, 'create_list.html', {})
 
 def add_created_list(request):
-
-    return render(request, 'index.html', {})
+    if request.method == 'POST':
+        new_name = request.POST.get('new_name')
+        print(new_name)
+        form = TaskList(name=new_name)    
+        form.save()
+    
+    return redirect("/")
 
 def create_task(request,id):
     task_list = TaskList.objects.get(id=id)

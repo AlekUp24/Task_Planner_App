@@ -5,13 +5,14 @@
 
 <h2 class="text-2xl font-semibold">Add new list:</h2>
 
-<form action="" method="POST" class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">  {% csrf_token %}
+<form action="add_created_list" method="post" class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">  
+    {% csrf_token %}
     <div class="container">
-        <label class="font-semibold px-4 justify-self-start ">Name:</label>
-        <input type="text" size="50" class="border rounded-lg px-3" placeholder="Task name...">
+        <label for="new_name" class="font-semibold px-4 justify-self-start ">Name:</label>
+        <input name="new_name" type="text" size="50" class="border rounded-lg px-3" placeholder="Task name..." required>
     </div>
     
-    <input type="submit" href='add_created_list' value="Create List" class="bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+    <input type="submit" value="Create List" class="bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
 
 </form>
 
