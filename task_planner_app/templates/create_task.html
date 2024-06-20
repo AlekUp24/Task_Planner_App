@@ -4,31 +4,33 @@
 
 <h2 class="text-2xl font-semibold">Add task list:</h2>
 
-<form class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">
+<form action="add_created_task" method="post" class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">
+    
+    {% csrf_token %}
     
     <div class="container flex">
-        <label class="font-semibold px-4 justify-self-start ">List:</label>
-        {{list.name}}
+        <label for="list_id" class="font-semibold px-4 justify-self-start ">List:</label>
+        <input name="list_id" value="{{list.name}}" readonly>
     </div>
 
     <div class="container flex">
-        <label class="font-semibold px-4 justify-self-start ">Name:</label>
-        <input type="text" class="border rounded-lg px-3" placeholder="Task name...">
+        <label for="new_name" class="font-semibold px-4 justify-self-start ">Name:</label>
+        <input name="new_name" type="text" class="border rounded-lg px-3" placeholder="Task name..." required>
     </div>
     <div class="container flex">
-        <label class="font-semibold px-4">Description:</label>
-        <textarea type="text" class="border rounded-lg px-3" rows="3" cols="100" placeholder="Task description..."></textarea>
+        <label for="new_description" class="font-semibold px-4">Description:</label>
+        <textarea name="new_description" type="text" class="border rounded-lg px-3" rows="3" cols="100" placeholder="Task description..." required></textarea>
     </div>
     <div class="container flex">
-        <label class="font-semibold px-4">Completed:</label>
-        <input type="checkbox" class="border rounded-lg text-center">
+        <label for="new_completed" class="font-semibold px-4">Completed:</label>
+        <input name="new_completed" type="checkbox" class="border rounded-lg text-center">
     </div>
     <div class="container flex">
-        <label class="font-semibold px-4">Due Date:</label>
-        <input type="datetime-local" class="border rounded-lg text-center">
+        <label for="new_due" class="font-semibold px-4">Due Date:</label>
+        <input name="new_due" type="datetime-local" class="border rounded-lg text-center" required>
     </div>
     
-    <input type="submit" href='create_list' value="+ Create Task" class="bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+    <input type="submit" value="Create Task" class="bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
 
 </form>
 

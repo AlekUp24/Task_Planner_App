@@ -14,4 +14,8 @@
     <label class="mt-2 font-semibold">Deadline</label>
     <div class="ml-5">{{task.due_date}}</div>
 </div>
+
+<button class="bg-red-500 mx-auto text-lg text-white font-semibold mt-5 p-4 px-10 border rounded-lg transition-transform transform hover:bg-red-700">
+    <a href='./{{task.id}}/delete_task'>- Delete Task -</a>
+</button>
 {% endblock %}
