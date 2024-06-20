@@ -22,6 +22,10 @@ def task_details(request,id,id_2):
 def create_list(request):
     return render(request, 'create_list.html', {})
 
+def add_created_list(request):
+
+    return render(request, 'index.html', {})
+
 def create_task(request,id):
     task_list = TaskList.objects.get(id=id)
     return render(request, 'create_task.html', {"list":task_list})
