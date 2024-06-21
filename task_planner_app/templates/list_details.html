@@ -6,11 +6,12 @@
 <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md flex flex-col">
     <ul>
     {% for item in items %}
-        <li class="m-4 transition-transform transform hover:scale-105">
+        <li class="m-4 transition-transform transform hover:scale-105 text-left px-10">
             <a href="./{{list.id}}/{{item.id}}">
-                <div class="font-semibold">{{item.name}}</div>
-                <div>{{ item.description }}</div>
-                <div>Due: {{item.due_date}}</div>
+                <div class="px-2 text-lg font-semibold mb-3">{{item.name}}</div>
+                <div class="px-4 mb-2">{{ item.description }}</div>
+                <div class="px-4">Completed: {{ item.complete }}</div>
+                <div class="px-4">Due: {{item.due_date}}</div>
             </a>
         </li>
     {% endfor %}
