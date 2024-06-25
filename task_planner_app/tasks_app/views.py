@@ -69,3 +69,17 @@ def delete_task(request,id,id_2):
     task_item.delete()
 
     return redirect("/"+str(id))
+
+def update_task(request,id,id_2):
+    item_to_update = TaskItem.objects.get(id=id_2)
+    if item_to_update.complete == True:
+        item_to_update.complete = False 
+    else:
+        item_to_update.complete = True
+
+    item_to_update.save()
+    
+    return redirect("/"+str(id) + "/" + str(id_2))
+
+def save_updated_task():
+    pass
