@@ -8,11 +8,12 @@ from .forms import SignUpForm
 # Create your views here.
 
 def index(request):
-
-    lists = TaskList.objects.filter(user_id=request.user.id)
-
-    return render(request, 'index.html', {"lists":lists})
-
+    if request.user.is_authenticated:
+        lists = TaskList.objects.filter(user_id=request.user.id)
+        return render(request, 'index.html', {"lists":lists})
+    else:
+        return redirect('login')
+    
 # lists
 
 def getlist(request,id):

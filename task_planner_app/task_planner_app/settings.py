@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-*x%6(oyqk$b4s!2!h(vo#b)23=1p!l+g2^wuw@$)#2k&#p-7q=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['taskplannerapp-production.up.railway.app', 'https://taskplannerapp-production.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1','taskplannerapp-production.up.railway.app', 'https://taskplannerapp-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://taskplannerapp-production.up.railway.app']
 
 # Application definition
