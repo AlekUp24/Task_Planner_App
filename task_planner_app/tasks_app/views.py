@@ -1,9 +1,15 @@
 from django.shortcuts import render, redirect
 from .models import TaskList, TaskItem
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from .forms import SignUpForm
+
 # Create your views here.
 
 def index(request):
-    lists = TaskList.objects.all()
+
+    lists = TaskList.objects.filter(user_id=request.user.id)
 
     return render(request, 'index.html', {"lists":lists})
 
@@ -21,7 +27,7 @@ def create_list(request):
 def add_created_list(request):
     if request.method == 'POST':
         new_name = request.POST.get('new_name')
-        form = TaskList(name=new_name)    
+        form = TaskList(user_id = request.user.id, name=new_name)    
         form.save()
     
     return redirect("/")
@@ -83,3 +89,50 @@ def update_task(request,id,id_2):
 
 def save_updated_task():
     pass
+
+
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+
+            messages.success(request,("You have been logged in!"))
+            return redirect('index')
+        else:
+            messages.error(request,("There was an error, please try again..."))
+            return redirect('login')
+    else:   
+        return render(request, 'login.html',{})
+
+def logout_user(request):
+    
+    logout(request)
+    messages.success(request,("You have been logged out..."))
+
+    return redirect('login')
+
+def register_user(request):
+    form = SignUpForm()
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            # log in user
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request,("You have been registered successfuly! Enjoy!"))
+            return redirect('index')
+        else:
+            messages.error(request,("Oops! There was a problem, please try again..."))
+            return redirect('register')
+    else:
+        return render(request, 'register.html',{
+            'form':form
+            })

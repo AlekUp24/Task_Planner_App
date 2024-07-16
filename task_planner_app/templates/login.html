@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h2 class="text-3xl font-semibold">Login:</h2>
+
+    <center>
+    <div>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="username" placeholder="Username..." class="mt-5 block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input type="password" name="password" placeholder="Password..." class="mt-5 block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+            <button type="submit" class="mt-10 bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+                Login</button>
+          </form>
+    </div>
+
+    <div>
+        <p class="text-lg mb-0">
+            Not a member yet?<br>
+            <b><a href="{% url 'register' %}" class="text-black-50">Click here</a></b> to register!
+        </p>
+
+    </div>
+    </center>
+    
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h2 class="text-3xl font-semibold">Register:</h2>
+
+    <center>
+    <div>
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div>
+                {{ form.as_p}}
+            </div>
+            <button type="submit" class="mt-10 bg-green-500 mx-auto text-lg text-white font-semibold m-5 p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+                Register</button>
+          </form>
+    </div>
+
+    </center>
+
+{% endblock %}

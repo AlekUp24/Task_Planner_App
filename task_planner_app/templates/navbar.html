@@ -1,9 +1,21 @@
     <!-- Navbar -->
-    <nav class="bg-green-600 p-4 text-white flex justify-left">
-        <div>
+    <nav class="bg-green-600 p-4 text-white flex flex-row justify-between">
+        
+        <div class="flex flex-row justify-start">
             <a href="/"><h1 class="text-3xl font-bold">Task Planner App</h1></a>
         </div>
-        <div>
-            <a href="javascript:history.back()" class="text-white font-bold text-3xl m-4 p-3 ml-9 align-middle">&#10218;&#10218;&#10218;</a>
+        
+        <div class="flex flex-row justify-end">  
+            {% if user.is_authenticated %}
+                <div><h1 class="mx-auto text-xl text-white font-semibold p-2 px-10 mr-10">Welcome, {{user.username}}!</h1></div>
+
+                <a href="{% url 'logout'%}" class="bg-green-500 mx-auto text-lg text-white font-semibold p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+                    Logout</a>
+
+            {% else %}
+                <a href="{% url 'login'%}" class="bg-green-500 mx-auto text-lg text-white font-semibold p-2 px-10 border rounded-lg transition-transform transform hover:bg-green-700">
+                    Login</a>
+            {% endif %}
         </div>
+
      </nav>
